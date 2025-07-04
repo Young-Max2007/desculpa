@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Perdoa seu namorado burro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            font-family: "Lilita One", sans-serif;
+            margin: 0;
+            color: #ffffff;
+            background: url('https://i.pinimg.com/originals/b9/4f/bd/b94fbdd31b4696e748a16fb59435bfe7.gif') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px auto;
+            width: 90%;
+            max-width: 700px;
+        }
+
+        h1 {
+            font-size: 70px;
+        }
+
+        h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+
+        #motivo {
+            margin: 30px 0;
+            font-size: 34px;
+        }
+
+        #proximo {
+            background-color: black;
+            color: white;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 0 15px white;
+            transition: 0.3s;
+        }
+
+        #proximo:hover {
+            box-shadow: 0 0 30px white;
+        }
+
+        img {
+            width: 320px;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
+        }
+
+        hr {
+            border: none;
+            height: 4px;
+            width: 80%;
+            margin: 40px auto;
+            background: white;
+            box-shadow: 0 0 10px white, 0 0 20px white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Me perdoa amor</h1>
+        </header>
+
+        <hr>
+
+        <h2>Top 10 motivos para você perdoar o burro do seu namorado:</h2>
+
+        <hr>
+
+        <div id="motivo">Clique no botão para ver um motivo!</div>
+        <img id="imagem" src="" alt="Imagem do motivo" style="display:none;">
+        
+        <hr>
+
+        <button id="proximo">Próximo</button>
+    </div>
+
+<script>
+    const motivos = [
+        "1. Ele sempre tenta te fazer uma garota feliz 🥺",
+        "2. Ele se preocupa com você. muito",
+        "3. Ele é leal e fiel, só tem olhos pra você",
+        "4. Ele faz o melhor que pode",
+        "5. Ele aprendeu com os erros dele, de verdade 🥺",
+        "6. Ele valoriza seus sentimentos, e quer conversar",
+        "7. Ele faz pequenas surpresas para você ☺️💕",
+        "8. Ele sempre tenta melhorar, mesmo que ele falhe as vezes 😞",
+        "9. Ele adora sua presença, e adora te ajudar com o que precisar",
+        "10. Porque eu te amo meu amor ☺️💖!"
+    ];
+
+    const imagens = [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxmLFzBck3gM9XbofEavTDfWwek9sIJ-Igv4Kh32HILJMsXdsLpYGXhywR&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk5V-yOGd6cIeXzE81stcIQaxoOyvU6qKoP0Rgztct8ZC6rhqb46r5BD20&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxhNYhUIQ-Pp6exwtQsS3mQCUhN2pPgbxbYg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRerGDqWFaqw3vBkJaFnjFjPBV0JT81RzHIyvxHxUnqixXBp17ieanv2wQ&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg6xb-tnuB94XxskcNTKEreEghCl8gfnCd-SwTq3EB5UUQ9bJBBVllscM&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9w8_GeNy5dIUrlz3sa3G-odoC-Ot_I7w-WLBoEVdZhljw7nM6C9xM1U&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSueia1CqJzHIHetxpOZp6rMsJ3yk6OoIYgqH-ssofLSmpmNuLj1OZ6cN6j&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmYLK5j9XmEG94QJ2fQ2TvtXKQdblvo9Hgaw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScj-qf31vHv1Li7iPIi9uNgeiRbqWuBRF8uw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW6Ku4PC6rcLQtCDa4IRu0CJjHA9YINd7Lhmf7a1aLnwO0Hx2LapEP0cU&s=10"
+    ];
+
+    let indice = 0;
+
+    const motivoEl = document.getElementById('motivo');
+    const imagemEl = document.getElementById('imagem');
+    const botaoProximo = document.getElementById('proximo');
+
+    // Criar botão surpresa
+    const botaoSurpresa = document.createElement("button");
+    botaoSurpresa.textContent = "oque esse botão faz??";
+    botaoSurpresa.style.backgroundColor = "white";
+    botaoSurpresa.style.color = "black";
+    botaoSurpresa.style.padding = "14px 28px";
+    botaoSurpresa.style.marginTop = "20px";
+    botaoSurpresa.style.fontSize = "22px";
+    botaoSurpresa.style.border = "none";
+    botaoSurpresa.style.borderRadius = "10px";
+    botaoSurpresa.style.cursor = "pointer";
+    botaoSurpresa.style.display = "none";
+    botaoSurpresa.style.boxShadow = "0 0 15px white";
+
+    // Adiciona o botão na tela (fora do script ainda tá invisível)
+    document.querySelector('.container').appendChild(botaoSurpresa);
+
+    botaoProximo.addEventListener('click', function () {
+        if (indice < motivos.length) {
+            motivoEl.innerText = motivos[indice];
+            imagemEl.src = imagens[indice];
+            imagemEl.style.display = 'block';
+            indice++;
+        } else {
+            motivoEl.innerText = "Meu amor já viu todos os motivos! ☺️";
+            imagemEl.style.display = 'none';
+            botaoProximo.disabled = true;
+            botaoSurpresa.style.display = 'inline-block'; // Mostra o botão surpresa
+        }
+    });
+
+    // Efeito de explosão de corações
+    botaoSurpresa.addEventListener('click', () => {
+        const emojis = ["💖", "💚", "💕"];
+        for (let i = 0; i < 30; i++) {
+            const emoji = document.createElement("div");
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.position = "absolute";
+            emoji.style.left = `${Math.random() * 100}%`;
+            emoji.style.top = `${Math.random() * 100}%`;
+            emoji.style.fontSize = "30px";
+            emoji.style.animation = "explode 1s ease-out forwards";
+            document.body.appendChild(emoji);
+
+            setTimeout(() => emoji.remove(), 1000); // Remove o coração depois de 1s
+        }
+    });
+
+    // Estilo da animação
+    const style = document.createElement("style");
+    style.innerHTML = `
+    @keyframes explode {
+        0% {
+            transform: scale(0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2.5) rotate(720deg);
+            opacity: 0;
+        }
+    }`;
+    document.head.appendChild(style);
+</script>
+
+</body>
+</html>
